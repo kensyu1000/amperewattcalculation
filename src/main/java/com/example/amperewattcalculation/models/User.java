@@ -1,11 +1,12 @@
 package com.example.amperewattcalculation.models;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-// import javax.persistence.JoinColumn;
-// import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -15,24 +16,28 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "items")
-public class Item {
+@Table(name = "users")
+public class User {
 
   @Id
   @GeneratedValue
-  private Long item_id;
-
-  // // @ManyToOne()
-  // @JoinColumn(name = "user_id", referencedColumnName = "user_id")
   private Long user_id;
 
-  @Size(max = 50)
-  private String item_maker_name;
+  @NotBlank
+  @Size(max = 30)
+  private String user_name;
 
   @NotBlank
-  @Size(max = 50)
-  private String item_name;
-
+  @Email
   @Size(max = 100)
-  private String item_code;
+  private String mailaddress;
+
+  @NotBlank
+  @Size(min = 8)
+  @Size(max = 50)
+  private String password;
+
+  private Date created_at;
+  private Date updated_at;
+  private Date deleted_at;
 }
