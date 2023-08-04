@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-  <meta charset="utf-8" />
-  <title>A計算</title>
+<head th:replace="header::css_js"><!-- th:replace=ページ名::fragment名 -->
 </head>
 
 <body>
   <div th:replace="header::header1"></div>
-  <p>テスト</p>
+  <div id=powerstrip>
+    セレクトボックス
+  </div>
 </body>
 
 </html>

@@ -1,0 +1,25 @@
+header {
+  background-color: #FFF766;
+  padding: 20px 1rem 1rem 1rem;
+}
+
+.AChead {
+  display: inline-block;
+}
+
+#ACtitle {
+  font-weight: bold;
+  font-size: 1rem;
+  width: 10%;
+}
+
+#hoo {
+  text-align: right;
+  display: inline-block;
+  width: 85%;
+}
+
+.controll {
+  display: inline-block;
+  padding-left: 1rem;
+}
