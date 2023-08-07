@@ -1,1 +1,13 @@
+#powerstrip {
+  padding: 5% 0 0 5%;
+}
 
+#item {
+  padding: 5% 0 0 5%;
+}
+
+/* 真ん中に表示させたい */
+#btn_calculation {
+  margin: 3% 45% 0 45%;
+  background-color: greenyellow;
+}

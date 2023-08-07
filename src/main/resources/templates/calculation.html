@@ -1,1 +1,34 @@
-<p>hello</p>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header::css_js('トップ',~{::link},~{::script})"><!-- th:replace=ページ名::fragment名 -->
+  <link th:href="@{/css/common.css}" rel="stylesheet">
+</head>
+
+<body>
+  <div th:replace="header::header1"></div>
+  <main>
+
+    <div id="powerstrip">
+      <select name="psselect">
+        <option id="psselect_id" value="1">電源タップ</option>
+        <option value="2">yoyo</option>
+      </select>
+      <input type="number" min=0 value=1500 name="watt" required />W
+    </div>
+    <!-- 家電製品選択 -->
+    <div id="item">
+      <select name="itemselect">
+        <option id="itemselect_id" value="1">電化製品</option>
+
+      </select>
+    </div>
+
+    <button id=btn_calculation>
+      計算
+    </button>
+
+  </main>
+</body>
+
+</html>

@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="header::css_js"><!-- th:replace=ページ名::fragment名 -->
+<head th:replace="header::css_js('機器一覧',~{::link},~{::script})"><!-- th:replace=ページ名::fragment名 -->
+  <link th:href="@{/css/common.css}" rel="stylesheet">
 </head>
 
 <body>
   <div th:replace="header::header1"></div>
-  <div id=powerstrip>
-    <option id="psselect" value="">
 
-    </option>
-  </div>
+  <main>
+
+  </main>
 </body>
 
 </html>

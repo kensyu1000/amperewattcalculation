@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:fragment="css_js">
+<head th:fragment="css_js(title, links, scripts)">
   <meta charset="utf-8">
   <!-- 共通で読み込むcss -->
   <link th:href="@{/css/header.css}" rel="stylesheet">
-  <title>A計算</title>
+  <title th:text="'A計算 | '+${title}"></title>
+  <th:block th:replace="${links} ?: _" />
+  <th:block th;replace="${scripts} ?: _" />
 </head>
 
 
@@ -15,7 +17,7 @@
       <a href="/">A計算</a>
     </div>
     <nav id="hoo">
-      <div class="AChead controll"><a href="#">機器一覧</a></div>
+      <div class="AChead controll"><a href="/device">機器一覧</a></div>
       <div class="AChead controll"><a href="#">利用登録</a></div>
       <div class="AChead controll"><a href="#">ログイン</a></div>
     </nav>
