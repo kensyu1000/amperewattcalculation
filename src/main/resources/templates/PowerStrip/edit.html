@@ -8,30 +8,32 @@
 <body>
   <div th:replace="header::header1"></div>
   <main>
-    <form th:action="@{/powerstrip/register}" th:object="${powerstrip}">
-      <div id="maker_name" method="post">
+    <form th:action="@{/powerstrip/update/{id}(id=${id})}" th:object="${powerstrip}" method="post">
+      <div id="maker_name">
         メーカー名
-        <input type="text" name="ps_maker_name" />
+        <input type="text" name="ps_maker_name" th:field="*{ps_maker_name}" />
       </div>
 
       <div id="name">
         商品名
-        <input type="text" name="ps_name" required />
+        <input type="text" name="ps_name" th:field="*{ps_name}" required />
       </div>
 
       <div id="code">
         商品コード
-        <input type="text" name="ps_code" />
+        <input type="text" name="ps_code" th:field="*{ps_code}" />
       </div>
 
       <div id="outllet_number">
         コンセント数
-        <input type="number" name="outllet_number" />
+        <input type="number" name="outllet_number" th:field="*{outllet_number}" />
       </div>
 
       <button type="submit">
         修正
       </button>
+    </form>
+    <form th:action="@{/powerstrip/delete/{id}(id=${id})}" method="post">
       <button type="submit">
         削除
       </button>

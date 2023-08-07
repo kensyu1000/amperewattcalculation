@@ -62,13 +62,16 @@
 
         <!-- テーブル要素 繰り返し処理予定 -->
         <tbody>
-          <tr>
-            <td>A社</td>
-            <td>Bタップ</td>
-            <td>CDE</td>
-            <td>FA</td>
-            <td>GW</td>
-            <td><button id="item_edit" onclick="location.href='item/edit'">修正</button></td>
+          <tr th:each="item : ${items}">
+            <td>[[${item.item_maker_name}]]</td>
+            <td>[[${item.item_name}]]</td>
+            <td>[[${item.item_code}]]</td>
+            <td>[[${item.ampere}]]</td>
+            <td>[[${item.watt}]]</td>
+            <td>
+              <input type="button" name="submit" th:attr="onclick='location.href=\'item/edit/'+${item.item_id}+'\''"
+                value="修正">
+            </td>
           </tr>
         </tbody>
 

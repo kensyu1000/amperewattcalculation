@@ -9,17 +9,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.amperewattcalculation.models.Item;
 import com.example.amperewattcalculation.models.PowerStrip;
+import com.example.amperewattcalculation.repository.ItemRepository;
 import com.example.amperewattcalculation.repository.PowerStripRepository;
 
 @Controller
 public class CalculationController {
 
   // PowerStripクラスのフィールドをfinalにする
-  private final PowerStripRepository repository;
+  private final PowerStripRepository psrepository;
+  private final ItemRepository itemrepository;
 
-  public CalculationController(PowerStripRepository repository) {
-    this.repository = repository;
+  public CalculationController(PowerStripRepository psrepository, ItemRepository itemrepository) {
+    this.psrepository = psrepository;
+    this.itemrepository = itemrepository;
   }
 
   @GetMapping("/")
@@ -29,7 +33,8 @@ public class CalculationController {
 
   @GetMapping("/device")
   public String device(@ModelAttribute PowerStrip powerstrip, Model model) {
-    model.addAttribute("powerstrips", repository.findAll());
+    model.addAttribute("powerstrips", psrepository.findAll());
+    model.addAttribute("items", itemrepository.findAll());
     return "device";
   }
 
@@ -46,15 +51,20 @@ public class CalculationController {
   @GetMapping("/powerstrip/edit/{id}")
   public String ps_edit(@PathVariable("id") long ps_id, Model model) {
     // idと一致するデータを取得
-    model.addAttribute("powerstrip", repository.findById(ps_id));
+    model.addAttribute("powerstrip", psrepository.findById(ps_id));
     return "PowerStrip/edit";
   }
 
-  @PostMapping("/powerstrip/edit/{id}")
-  public String ps_edit2(@PathVariable("id") long ps_id, Model model) {
-    // idと一致するデータを取得
-    model.addAttribute("powerstrip", repository.findById(ps_id));
-    return "PowerStrip/edit";
+  @PostMapping("/powerstrip/update/{id}")
+  public String ps_update(@PathVariable("id") long ps_id, Model model) {
+    // データの更新処理を追記、メソッド内の引数は何が必要かわかってない
+    return "calculation";
+  }
+
+  @PostMapping("/powerstrip/delete/{id}")
+  public String ps_delete(@PathVariable("id") long ps_id, Model model) {
+    // データの削除処理を追記、メソッド内の引数は何が必要かわかってない
+    return "calculation";
   }
 
   @GetMapping("/item/register")
@@ -62,9 +72,28 @@ public class CalculationController {
     return "Item/register";
   }
 
-  @GetMapping("/item/edit")
-  public String item_edit() {
+  @PostMapping("/item/register")
+  public String item_register(@ModelAttribute Item item) {
+    return "device";
+  }
+
+  @GetMapping("/item/edit/{id}")
+  public String item_edit(@PathVariable("id") long item_id, Model model) {
+    // idと一致するデータを取得
+    model.addAttribute("item", itemrepository.findById(item_id));
     return "Item/edit";
+  }
+
+  @PostMapping("/item/update/{id}")
+  public String item_update(@PathVariable("id") long item_id, Model model) {
+    // データの更新処理を追記、メソッド内の引数は何が必要かわかってない
+    return "calculation";
+  }
+
+  @PostMapping("/item/delete/{id}")
+  public String item_delete(@PathVariable("id") long item_id, Model model) {
+    // データの削除処理を追記、メソッド内の引数は何が必要かわかってない
+    return "calculation";
   }
 
   // 初期データ
@@ -75,13 +104,21 @@ public class CalculationController {
     Panasonic.setPs_name("電源タップ");
     Panasonic.setPs_code("P01");
     Panasonic.setOutllet_number(3);
-    repository.saveAndFlush(Panasonic);
+    psrepository.saveAndFlush(Panasonic);
 
     PowerStrip Apw = new PowerStrip();
     Apw.setPs_maker_name("Apw");
     Apw.setPs_name("電源タップ");
     Apw.setPs_code("APW01");
     Apw.setOutllet_number(3);
-    repository.saveAndFlush(Apw);
+    psrepository.saveAndFlush(Apw);
+
+    Item iPhone = new Item();
+    iPhone.setItem_maker_name("Apple");
+    iPhone.setItem_name("iPhone13");
+    iPhone.setItem_code("AI13");
+    iPhone.setAmpere(20);
+    iPhone.setWatt(10);
+    itemrepository.saveAndFlush(iPhone);
   }
 }

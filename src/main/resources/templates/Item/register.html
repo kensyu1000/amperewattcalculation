@@ -8,30 +8,30 @@
 <body>
   <div th:replace="header::header1"></div>
   <main>
-    <form>
+    <form th:action="@{/item/register}" th:object="${item}" method="post">
       <div id="maker_name">
         メーカー名
-        <input type="text" name="ps_maker_name" />
+        <input type="text" name="*{item_maker_name}" />
       </div>
 
       <div id="name">
         商品名
-        <input type="text" name="ps_name" required />
+        <input type="text" name="*{item_name}" required />
       </div>
 
       <div id="code">
         商品コード
-        <input type="text" name="ps_code" />
+        <input type="text" name="*{item_code}" />
       </div>
 
       <div id="ampere_number">
         アンペア数
-        <input type="number" name="ampere_number" />
+        <input type="number" name="*{ampere}" />
       </div>
 
       <div id="watt_number">
         ワット数
-        <input type="number" name="watt_number" />
+        <input type="number" name="*{watt}" />
       </div>
 
       <button type="submit">

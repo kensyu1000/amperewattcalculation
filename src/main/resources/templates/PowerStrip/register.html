@@ -11,22 +11,22 @@
     <form th:action="@{/powerstrip/register}" th:object="${powerstrip}" method="post">
       <div id="maker_name">
         メーカー名
-        <input type="text" th:field="*{ps_maker_name}" />
+        <input type="text" name="ps_maker_name" />
       </div>
 
       <div id="name">
         商品名
-        <input type="text" th:field="*{ps_name}" required />
+        <input type="text" name="ps_name" required />
       </div>
 
       <div id="code">
         商品コード
-        <input type="text" th:field="*{ps_code}" />
+        <input type="text" name="ps_code" />
       </div>
 
       <div id="outllet_number">
         コンセント数
-        <input type="number" th:field="*{outllet_number}" />
+        <input type="number" name="outllet_number" />
       </div>
 
       <button type="submit">
