@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header::css_js('電源タップ編集',~{::link},~{::script})"><!-- th:replace=ページ名::fragment名 -->
+  <link th:href="@{/css/common.css}" rel="stylesheet">
+</head>
+
+<body>
+  <div th:replace="header::header1"></div>
+  <main>
+    <form>
+      <div id="maker_name">
+        メーカー名
+        <input type="text" name="ps_maker_name" />
+      </div>
+
+      <div id="name">
+        商品名
+        <input type="text" name="ps_name" required />
+      </div>
+
+      <div id="code">
+        商品コード
+        <input type="text" name="ps_code" />
+      </div>
+
+      <div id="outlet_number">
+        コンセント数
+        <input type="number" name="outlet_number" />
+      </div>
+
+      <button type="submit">
+        修正
+      </button>
+      <button type="submit">
+        削除
+      </button>
+    </form>
+  </main>
+</body>
+
+</html>

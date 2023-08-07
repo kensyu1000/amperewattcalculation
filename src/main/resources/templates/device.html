@@ -10,6 +10,66 @@
 
   <main>
 
+    <div id="ps_view">
+      電源タップ
+      <button id="ps_register" onclick="location.href='powerstrip/register'">
+        新規登録
+      </button>
+      <table border="1" width=100%>
+        <thead>
+          <tr>
+            <th>メーカー名</th>
+            <th>商品名</th>
+            <th>商品コード</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <!-- テーブル要素 繰り返し処理予定 -->
+        <tbody>
+          <tr>
+            <td>A社</td>
+            <td>Bタップ</td>
+            <td>CDE</td>
+            <td><button id="ps_edit" onclick="location.href='powerstrip/edit'">修正</button></td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+    <div id="item_view">
+      電化製品
+      <button id="item_register" onclick="location.href='item/register'">
+        新規登録
+      </button>
+      <table border="1" width=100%>
+        <thead>
+          <tr>
+            <th>メーカー名</th>
+            <th>商品名</th>
+            <th>商品コード</th>
+            <th>アンペア数</th>
+            <th>ワット数</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <!-- テーブル要素 繰り返し処理予定 -->
+        <tbody>
+          <tr>
+            <td>A社</td>
+            <td>Bタップ</td>
+            <td>CDE</td>
+            <td>FA</td>
+            <td>GW</td>
+            <td><button id="item_edit" onclick="location.href='item/edit'">修正</button></td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+
   </main>
 </body>
 
