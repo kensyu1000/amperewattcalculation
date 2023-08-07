@@ -27,12 +27,17 @@
 
         <!-- テーブル要素 繰り返し処理予定 -->
         <tbody>
-          <tr>
-            <td>A社</td>
-            <td>Bタップ</td>
-            <td>CDE</td>
-            <td><button id="ps_edit" onclick="location.href='powerstrip/edit'">修正</button></td>
-          </tr>
+          <tr th:each="powerstrip : ${powerstrips}">
+            <td>[[${powerstrip.ps_maker_name}]]</td>
+            <td>[[${powerstrip.ps_name}]]</td>
+            <td>[[${powerstrip.ps_code}]]</td>
+            <td>
+              <input type="button" name="submit"
+                th:attr="onclick='location.href=\'powerstrip/edit/'+${powerstrip.ps_id}+'\''" value="修正">
+            </td>
+            <!-- これだとうまくいかない 
+              <td><button id="ps_edit" onclick="location.href='powerstrip/edit/' + ' ${powerstrip.ps_id} '">修正</button>
+            </td> -->
         </tbody>
 
       </table>
