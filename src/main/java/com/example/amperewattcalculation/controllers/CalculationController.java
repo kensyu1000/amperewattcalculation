@@ -2,8 +2,6 @@ package com.example.amperewattcalculation.controllers;
 
 import javax.annotation.PostConstruct;
 
-// import org.slf4j.Logger;
-// import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,7 +54,8 @@ public class CalculationController {
 
   @PostMapping("/powerstrip/register")
   public String ps_register(@ModelAttribute PowerStrip powerstrip, Model model) {
-    psrepository.saveAndFlush(powerstrip);
+    // psrepository.saveAndFlush(powerstrip);
+    ps_service.register(powerstrip);
     return "redirect:/device";
   }
 
@@ -69,10 +68,7 @@ public class CalculationController {
 
   @PostMapping("/powerstrip/update/{id}")
   public String ps_update(@PathVariable("id") long ps_id, @ModelAttribute PowerStrip powerstrip, Model model) {
-    // Logger logger = LoggerFactory.getLogger(PowerStripService.class);
-    // logger.info("" + ps_id);
     ps_service.update(powerstrip, ps_id);
-    // psrepository.saveAndFlush(powerstrip);
     return "redirect:/device";
   }
 
@@ -89,7 +85,7 @@ public class CalculationController {
 
   @PostMapping("/item/register")
   public String item_register(@ModelAttribute Item item) {
-    itemrepository.saveAndFlush(item);
+    item_service.register(item);
     return "redirect:/device";
   }
 

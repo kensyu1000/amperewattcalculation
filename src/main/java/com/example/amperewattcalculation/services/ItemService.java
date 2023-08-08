@@ -14,7 +14,14 @@ public class ItemService {
   @Autowired
   ItemRepository itemrepository;
 
+  // 登録処理
+  public void register(@ModelAttribute Item item) {
+    itemrepository.saveAndFlush(item);
+  }
+
+  // 更新処理
   public void update(@ModelAttribute Item item, @PathVariable("id") long id) {
+    // idを item から取得しようとすると値が null になるため、idは別で取ってきている(hidden属性で保持させればよいのかも)
     Item edititem = itemrepository.findById(id).orElseThrow();
     edititem.setItem_maker_name(item.getItem_maker_name());
     edititem.setItem_name(item.getItem_name());
@@ -26,6 +33,7 @@ public class ItemService {
 
   }
 
+  // 削除処理
   public void delete(@PathVariable long id) {
     itemrepository.deleteById(id);
   }
