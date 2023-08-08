@@ -2,6 +2,9 @@ package com.example.amperewattcalculation.controllers;
 
 import javax.annotation.PostConstruct;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +16,7 @@ import com.example.amperewattcalculation.models.Item;
 import com.example.amperewattcalculation.models.PowerStrip;
 import com.example.amperewattcalculation.repository.ItemRepository;
 import com.example.amperewattcalculation.repository.PowerStripRepository;
+import com.example.amperewattcalculation.services.PowerStripService;
 
 @Controller
 public class CalculationController {
@@ -20,6 +24,9 @@ public class CalculationController {
   // PowerStripクラスのフィールドをfinalにする
   private final PowerStripRepository psrepository;
   private final ItemRepository itemrepository;
+
+  @Autowired
+  PowerStripService ps_service;
 
   public CalculationController(PowerStripRepository psrepository, ItemRepository itemrepository) {
     this.psrepository = psrepository;
@@ -58,7 +65,10 @@ public class CalculationController {
 
   @PostMapping("/powerstrip/update/{id}")
   public String ps_update(@PathVariable("id") long ps_id, @ModelAttribute PowerStrip powerstrip, Model model) {
-    psrepository.save(powerstrip);
+    Logger logger = LoggerFactory.getLogger(PowerStripService.class);
+    logger.info("" + ps_id);
+    ps_service.update(ps_id);
+    // psrepository.saveAndFlush(powerstrip);
     // データの更新処理を追記、メソッド内の引数は何が必要かわかってない
     return "redirect:/device";
   }
