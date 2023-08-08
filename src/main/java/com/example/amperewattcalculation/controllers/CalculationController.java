@@ -2,8 +2,8 @@ package com.example.amperewattcalculation.controllers;
 
 import javax.annotation.PostConstruct;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+// import org.slf4j.Logger;
+// import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +16,7 @@ import com.example.amperewattcalculation.models.Item;
 import com.example.amperewattcalculation.models.PowerStrip;
 import com.example.amperewattcalculation.repository.ItemRepository;
 import com.example.amperewattcalculation.repository.PowerStripRepository;
+import com.example.amperewattcalculation.services.ItemService;
 import com.example.amperewattcalculation.services.PowerStripService;
 
 @Controller
@@ -27,6 +28,9 @@ public class CalculationController {
 
   @Autowired
   PowerStripService ps_service;
+
+  @Autowired
+  ItemService item_service;
 
   public CalculationController(PowerStripRepository psrepository, ItemRepository itemrepository) {
     this.psrepository = psrepository;
@@ -65,17 +69,16 @@ public class CalculationController {
 
   @PostMapping("/powerstrip/update/{id}")
   public String ps_update(@PathVariable("id") long ps_id, @ModelAttribute PowerStrip powerstrip, Model model) {
-    Logger logger = LoggerFactory.getLogger(PowerStripService.class);
-    logger.info("" + ps_id);
+    // Logger logger = LoggerFactory.getLogger(PowerStripService.class);
+    // logger.info("" + ps_id);
     ps_service.update(powerstrip, ps_id);
     // psrepository.saveAndFlush(powerstrip);
-    // データの更新処理を追記、メソッド内の引数は何が必要かわかってない
     return "redirect:/device";
   }
 
   @PostMapping("/powerstrip/delete/{id}")
   public String ps_delete(@PathVariable("id") long ps_id, Model model) {
-    // データの削除処理を追記、メソッド内の引数は何が必要かわかってない
+    ps_service.delete(ps_id);
     return "redirect:/device";
   }
 
@@ -98,14 +101,16 @@ public class CalculationController {
   }
 
   @PostMapping("/item/update/{id}")
-  public String item_update(@PathVariable("id") long item_id, Model model) {
-    // データの更新処理を追記、メソッド内の引数は何が必要かわかってない
+  public String item_update(@PathVariable("id") long item_id, @ModelAttribute Item item, Model model) {
+    item_service.update(item, item_id);
+
     return "redirect:/device";
   }
 
   @PostMapping("/item/delete/{id}")
   public String item_delete(@PathVariable("id") long item_id, Model model) {
-    // データの削除処理を追記、メソッド内の引数は何が必要かわかってない
+    item_service.delete(item_id);
+
     return "redirect:/device";
   }
 

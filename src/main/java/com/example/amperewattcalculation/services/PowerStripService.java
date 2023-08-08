@@ -1,7 +1,5 @@
 package com.example.amperewattcalculation.services;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,19 +16,6 @@ public class PowerStripService {
   @Autowired
   PowerStripRepository psrepository;
 
-  public List<PowerStrip> findAll() {
-    return psrepository.findAll();
-  }
-
-  // public void update(Long id) {
-
-  // Logger logger = LoggerFactory.getLogger(PowerStripService.class);
-  // // var abc = powerstrip.getPs_id();
-  // logger.info("" + id);
-
-  // // PowerStrip powerstrip = new PowerStrip();
-
-  // }
   public void update(@ModelAttribute PowerStrip powerstrip, @PathVariable("id") long id) {
     Logger logger = LoggerFactory.getLogger(PowerStripService.class);
     var abc = powerstrip.getPs_maker_name();
@@ -46,6 +31,10 @@ public class PowerStripService {
 
     psrepository.saveAndFlush(editps);
 
+  }
+
+  public void delete(@PathVariable long id) {
+    psrepository.deleteById(id);
   }
 
 }
