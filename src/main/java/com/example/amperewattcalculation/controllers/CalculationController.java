@@ -32,7 +32,7 @@ public class CalculationController {
   }
 
   @GetMapping("/device")
-  public String device(@ModelAttribute PowerStrip powerstrip, Model model) {
+  public String device(@ModelAttribute PowerStrip powerstrip, Item item, Model model) {
     model.addAttribute("powerstrips", psrepository.findAll());
     model.addAttribute("items", itemrepository.findAll());
     return "device";
@@ -44,8 +44,9 @@ public class CalculationController {
   }
 
   @PostMapping("/powerstrip/register")
-  public String ps_register(@ModelAttribute PowerStrip powerstrip) {
-    return "device";
+  public String ps_register(@ModelAttribute PowerStrip powerstrip, Model model) {
+    psrepository.saveAndFlush(powerstrip);
+    return "redirect:/device";
   }
 
   @GetMapping("/powerstrip/edit/{id}")
@@ -56,15 +57,16 @@ public class CalculationController {
   }
 
   @PostMapping("/powerstrip/update/{id}")
-  public String ps_update(@PathVariable("id") long ps_id, Model model) {
+  public String ps_update(@PathVariable("id") long ps_id, @ModelAttribute PowerStrip powerstrip, Model model) {
+    psrepository.save(powerstrip);
     // データの更新処理を追記、メソッド内の引数は何が必要かわかってない
-    return "calculation";
+    return "redirect:/device";
   }
 
   @PostMapping("/powerstrip/delete/{id}")
   public String ps_delete(@PathVariable("id") long ps_id, Model model) {
     // データの削除処理を追記、メソッド内の引数は何が必要かわかってない
-    return "calculation";
+    return "redirect:/device";
   }
 
   @GetMapping("/item/register")
@@ -74,7 +76,8 @@ public class CalculationController {
 
   @PostMapping("/item/register")
   public String item_register(@ModelAttribute Item item) {
-    return "device";
+    itemrepository.saveAndFlush(item);
+    return "redirect:/device";
   }
 
   @GetMapping("/item/edit/{id}")
@@ -87,13 +90,13 @@ public class CalculationController {
   @PostMapping("/item/update/{id}")
   public String item_update(@PathVariable("id") long item_id, Model model) {
     // データの更新処理を追記、メソッド内の引数は何が必要かわかってない
-    return "calculation";
+    return "redirect:/device";
   }
 
   @PostMapping("/item/delete/{id}")
   public String item_delete(@PathVariable("id") long item_id, Model model) {
     // データの削除処理を追記、メソッド内の引数は何が必要かわかってない
-    return "calculation";
+    return "redirect:/device";
   }
 
   // 初期データ
