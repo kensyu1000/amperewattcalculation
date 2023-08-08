@@ -8,28 +8,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.example.amperewattcalculation.models.Item;
 import com.example.amperewattcalculation.models.PowerStrip;
-import com.example.amperewattcalculation.repository.ItemRepository;
-import com.example.amperewattcalculation.repository.PowerStripRepository;
 import com.example.amperewattcalculation.services.ItemService;
 import com.example.amperewattcalculation.services.PowerStripService;
 
 @Controller
 public class CalculationController {
 
-  // PowerStripクラスのフィールドをfinalにする
-  private final PowerStripRepository psrepository;
-  private final ItemRepository itemrepository;
-
   @Autowired
   PowerStripService ps_service;
 
   @Autowired
   ItemService item_service;
-
-  public CalculationController(PowerStripRepository psrepository, ItemRepository itemrepository) {
-    this.psrepository = psrepository;
-    this.itemrepository = itemrepository;
-  }
 
   @GetMapping("/")
   public String calculation() {
@@ -38,8 +27,9 @@ public class CalculationController {
 
   @GetMapping("/device")
   public String device(@ModelAttribute PowerStrip powerstrip, Item item, Model model) {
-    model.addAttribute("powerstrips", psrepository.findAll());
-    model.addAttribute("items", itemrepository.findAll());
+    // "powerstrips"でhtmlに電源タップの情報を全部渡している
+    model.addAttribute("powerstrips", ps_service.findAll());
+    model.addAttribute("items", item_service.findAll());
     return "device";
   }
 }

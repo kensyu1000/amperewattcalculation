@@ -1,5 +1,7 @@
 package com.example.amperewattcalculation.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,6 +15,11 @@ public class ItemService {
 
   @Autowired
   ItemRepository itemrepository;
+
+  // CalculationControllerにデータを渡す
+  public List<Item> findAll() {
+    return itemrepository.findAll();
+  }
 
   // 登録処理
   public void register(@ModelAttribute Item item) {
