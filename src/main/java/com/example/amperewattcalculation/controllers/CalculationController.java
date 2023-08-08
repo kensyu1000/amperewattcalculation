@@ -67,7 +67,7 @@ public class CalculationController {
   public String ps_update(@PathVariable("id") long ps_id, @ModelAttribute PowerStrip powerstrip, Model model) {
     Logger logger = LoggerFactory.getLogger(PowerStripService.class);
     logger.info("" + ps_id);
-    ps_service.update(ps_id);
+    ps_service.update(powerstrip, ps_id);
     // psrepository.saveAndFlush(powerstrip);
     // データの更新処理を追記、メソッド内の引数は何が必要かわかってない
     return "redirect:/device";
