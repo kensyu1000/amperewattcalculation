@@ -11,3 +11,11 @@
   margin: 3% 45% 0 45%;
   background-color: greenyellow;
 }
+
+#aftercalculation {
+  display: none;
+}
+
+#safety {
+  display: inline;
+}

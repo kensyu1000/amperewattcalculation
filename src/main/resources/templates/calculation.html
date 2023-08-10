@@ -33,9 +33,24 @@
     </div>
 
 
-    <button id="btn_calculation" th:onclick="test()">
+    <button id="btn_calculation" th:onclick="calculation()">
       計算
     </button>
+
+    <!-- 計算ボタンクリック後に表示 -->
+    <div id="aftercalculation">
+      ただいま
+      <a id="usedwatt"></a>
+      W 使用中です
+      <a id="safety">安全</a>
+
+      <a id="danger">
+        危険
+      </a>
+
+    </div>
+
+
 
   </main>
   <script src="js/common.js"></script>

@@ -69,6 +69,14 @@ public class ItemController {
     iPhone.setAmpere(20);
     iPhone.setWatt(10);
     itemrepository.saveAndFlush(iPhone);
+
+    Item PC = new Item();
+    PC.setItem_maker_name("Fujitsu");
+    PC.setItem_name("ノートパソコン");
+    PC.setItem_code("FL101");
+    PC.setAmpere(3);
+    PC.setWatt(30);
+    itemrepository.saveAndFlush(PC);
   }
 
 }
