@@ -21,7 +21,10 @@ public class CalculationController {
   ItemService item_service;
 
   @GetMapping("/")
-  public String calculation() {
+  public String calculation(@ModelAttribute PowerStrip powerstrip, Item item, Model model) {
+    model.addAttribute("powerstrips", ps_service.findAll());
+    model.addAttribute("items", item_service.findAll());
+    // model.addAttribute("item_names", item_service.findname(item));
     return "calculation";
   }
 

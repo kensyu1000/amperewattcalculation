@@ -9,26 +9,36 @@
   <div th:replace="header::header1"></div>
   <main>
 
-    <div id="powerstrip">
-      <select name="psselect">
-        <option id="psselect_id" value="1">電源タップ</option>
-        <option value="2">yoyo</option>
+    <div id="powerstrip">電源タップ
+      <select name="psselect" th:onchange="getON('[[${items}]]')">
+        <option value="" selected hidden>選択してください</option>
+        <option id="psselect_id" th:each="powerstrip : ${powerstrips}" th:value="${powerstrip.outllet_number}">
+          [[${powerstrip.ps_maker_name}]] /
+          [[${powerstrip.ps_name}]] / [[${powerstrip.ps_code}]]
+        </option>
       </select>
       <input type="number" min=0 value=1500 name="watt" required />W
     </div>
+
     <!-- 家電製品選択 -->
     <div id="item">
-      <select name="itemselect">
-        <option id="itemselect_id" value="1">電化製品</option>
+      <!-- <select name="itemselect" id="test" th:value="${items}">
+        <option id="itemselect_id" th:each="item, stat : ${items}"
+          th:value="${item.item_maker_name} + ',' + ${item.item_name} + ',' + ${item.item_code}">
+          [[${item.item_maker_name}]] /
+          [[${item.item_name}]] / [[${item.item_code}]]
+        </option>
 
-      </select>
+      </select> -->
     </div>
 
-    <button id=btn_calculation>
+
+    <button id="btn_calculation" th:onclick="test()">
       計算
     </button>
 
   </main>
+  <script src="js/common.js"></script>
 </body>
 
 </html>

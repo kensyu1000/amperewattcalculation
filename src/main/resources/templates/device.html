@@ -22,6 +22,7 @@
             <th>商品名</th>
             <th>商品コード</th>
             <th>コンセント数</th>
+            <th>ワット数</th>
             <th></th>
           </tr>
         </thead>
@@ -33,6 +34,7 @@
             <td>[[${powerstrip.ps_name}]]</td>
             <td>[[${powerstrip.ps_code}]]</td>
             <td>[[${powerstrip.outllet_number}]]</td>
+            <td>[[${powerstrip.watt}]]</td>
             <td>
               <input type="button" name="submit"
                 th:attr="onclick='location.href=\'powerstrip/edit/'+${powerstrip.ps_id}+'\''" value="修正">

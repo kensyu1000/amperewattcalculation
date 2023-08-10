@@ -64,13 +64,15 @@ public class PowerStripController {
     Panasonic.setPs_name("電源タップ");
     Panasonic.setPs_code("P01");
     Panasonic.setOutllet_number(3);
+    Panasonic.setWatt(1200);
     psrepository.saveAndFlush(Panasonic);
 
     PowerStrip Apw = new PowerStrip();
     Apw.setPs_maker_name("Apw");
     Apw.setPs_name("電源タップ");
     Apw.setPs_code("APW01");
-    Apw.setOutllet_number(3);
+    Apw.setOutllet_number(4);
+    Apw.setWatt(1500);
     psrepository.saveAndFlush(Apw);
   }
 

@@ -42,4 +42,8 @@ public class PowerStrip {
   @Min(1)
   private Integer outllet_number;
 
+  @NotNull
+  @Min(0)
+  private Integer watt;
+
 }

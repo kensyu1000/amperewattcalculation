@@ -21,6 +21,15 @@ public class ItemService {
     return itemrepository.findAll();
   }
 
+  // public List<Item> findname(@ModelAttribute Item item) {
+
+  // char[] item_name = new char[3];
+  // for(var i=0;i <3; i++){
+  // item_name[0] = i;
+  // }
+  // return itemrepository.
+  // }
+
   // 登録処理
   public void register(@ModelAttribute Item item) {
     itemrepository.saveAndFlush(item);
