@@ -33,6 +33,7 @@ public class PowerStripService {
     editps.setPs_maker_name(powerstrip.getPs_maker_name());
     editps.setPs_name(powerstrip.getPs_name());
     editps.setPs_code(powerstrip.getPs_code());
+    editps.setWatt(powerstrip.getWatt());
     editps.setOutllet_number(powerstrip.getOutllet_number());
 
     psrepository.saveAndFlush(editps);

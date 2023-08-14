@@ -10,9 +10,9 @@
   <main>
 
     <div id="powerstrip">電源タップ
-      <select name="psselect" th:onchange="getON('[[${items}]]')">
+      <select name="psselect" th:onchange="getON('[[${powerstrips}]]','[[${items}]]')">
         <option value="" selected hidden>選択してください</option>
-        <option id="psselect_id" th:each="powerstrip : ${powerstrips}" th:value="${powerstrip.outllet_number}">
+        <option id="psselect_id" th:each="powerstrip : ${powerstrips}" th:value="${powerstrip.ps_id}">
           [[${powerstrip.ps_maker_name}]] /
           [[${powerstrip.ps_name}]] / [[${powerstrip.ps_code}]]
         </option>
@@ -22,14 +22,7 @@
 
     <!-- 家電製品選択 -->
     <div id="item">
-      <!-- <select name="itemselect" id="test" th:value="${items}">
-        <option id="itemselect_id" th:each="item, stat : ${items}"
-          th:value="${item.item_maker_name} + ',' + ${item.item_name} + ',' + ${item.item_code}">
-          [[${item.item_maker_name}]] /
-          [[${item.item_name}]] / [[${item.item_code}]]
-        </option>
 
-      </select> -->
     </div>
 
 
@@ -48,7 +41,20 @@
         危険
       </a>
 
+      <!-- 計算後の登録 -->
+      <form th:action="@{/}" th:object="${item}" method="post">
+        <div id="ChangeToItem">
+          <div id="maker_name"></div>
+          <div id="name"></div>
+          <div id="code"></div>
+          <div id="ampere_number"></div>
+          <div id="watt_number"></div>
+          <div id="btn_after_register"></div>
+        </div>
+      </form>
+
     </div>
+
 
 
 

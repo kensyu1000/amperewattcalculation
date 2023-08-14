@@ -66,16 +66,16 @@ public class ItemController {
     iPhone.setItem_maker_name("Apple");
     iPhone.setItem_name("iPhone13");
     iPhone.setItem_code("AI13");
-    iPhone.setAmpere(20);
-    iPhone.setWatt(10);
+    iPhone.setAmpere(1.0);
+    iPhone.setWatt(100);
     itemrepository.saveAndFlush(iPhone);
 
     Item PC = new Item();
     PC.setItem_maker_name("Fujitsu");
     PC.setItem_name("ノートパソコン");
     PC.setItem_code("FL101");
-    PC.setAmpere(3);
-    PC.setWatt(30);
+    PC.setAmpere(3.0);
+    PC.setWatt(300);
     itemrepository.saveAndFlush(PC);
   }
 

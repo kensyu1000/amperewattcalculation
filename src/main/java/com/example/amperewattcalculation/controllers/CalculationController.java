@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.amperewattcalculation.models.Item;
 import com.example.amperewattcalculation.models.PowerStrip;
@@ -34,5 +35,11 @@ public class CalculationController {
     model.addAttribute("powerstrips", ps_service.findAll());
     model.addAttribute("items", item_service.findAll());
     return "device";
+  }
+
+  @PostMapping("/")
+  public String calculated_register(@ModelAttribute Item item) {
+    item_service.register(item);
+    return "redirect:/";
   }
 }

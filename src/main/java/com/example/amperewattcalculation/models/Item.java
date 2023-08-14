@@ -3,8 +3,6 @@ package com.example.amperewattcalculation.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-// import javax.persistence.JoinColumn;
-// import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -40,7 +38,7 @@ public class Item {
 
   @NotNull
   @Min(0)
-  private Integer ampere;
+  private Double ampere;
 
   @NotNull
   @Min(0)
