@@ -9,13 +9,14 @@
   <div th:replace="header::header1"></div>
   <main>
     <form th:action="@{/powerstrip/register}" th:object="${powerstrip}" method="post">
+
       <div id="maker_name">
-        メーカー名
+        メーカー&emsp;
         <input type="text" name="ps_maker_name" />
       </div>
 
       <div id="name">
-        商品名
+        商品名&emsp;&emsp;
         <input type="text" name="ps_name" required />
       </div>
 
@@ -25,18 +26,20 @@
       </div>
 
       <div id="outllet_number">
-        コンセント数
+        コンセント
         <input type="number" name="outllet_number" required />
       </div>
 
       <div id="watt">
-        ワット数
+        ワット&emsp;&emsp;
         <input type="number" name="watt" required />
       </div>
 
-      <button type="submit">
-        登録
-      </button>
+      <div class="btn_register">
+        <button type="submit">
+          登録
+        </button>
+      </div>
     </form>
   </main>
 </body>

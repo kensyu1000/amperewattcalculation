@@ -11,67 +11,73 @@
   <main>
 
     <div id="ps_view">
-      電源タップ
-      <button id="ps_register" onclick="location.href='powerstrip/register'">
-        新規登録
-      </button>
-      <table border="1" width=100%>
+      <p class="type">
+        電源タップ
+      </p>
+      <p class="register">
+        <button onclick="location.href='powerstrip/register'">
+          新規登録
+        </button>
+      </p>
+      <table border="2" style="border-collapse: collapse" width=100%>
         <thead>
           <tr>
             <th>メーカー名</th>
             <th>商品名</th>
             <th>商品コード</th>
-            <th>コンセント数</th>
-            <th>ワット数</th>
+            <th>コンセント</th>
+            <th>ワット</th>
             <th></th>
           </tr>
         </thead>
 
         <!-- テーブル要素 繰り返し処理予定 -->
         <tbody>
-          <tr th:each="powerstrip : ${powerstrips}">
+          <tr class="btn_edit" th:each="powerstrip : ${powerstrips}">
             <td>[[${powerstrip.ps_maker_name}]]</td>
             <td>[[${powerstrip.ps_name}]]</td>
             <td>[[${powerstrip.ps_code}]]</td>
-            <td>[[${powerstrip.outllet_number}]]</td>
-            <td>[[${powerstrip.watt}]]</td>
+            <td>[[${powerstrip.outllet_number}]] 個</td>
+            <td>[[${powerstrip.watt}]] W</td>
             <td>
               <input type="button" name="submit"
                 th:attr="onclick='location.href=\'powerstrip/edit/'+${powerstrip.ps_id}+'\''" value="修正">
             </td>
-            <!-- これだとうまくいかない 
-              <td><button id="ps_edit" onclick="location.href='powerstrip/edit/' + ' ${powerstrip.ps_id} '">修正</button>
-            </td> -->
         </tbody>
 
       </table>
     </div>
 
     <div id="item_view">
-      電化製品
-      <button id="item_register" onclick="location.href='item/register'">
-        新規登録
-      </button>
-      <table border="1" width=100%>
+      <p class="type">
+        電化製品
+      </p>
+      <p class="register">
+        <button onclick="location.href='item/register'">
+          新規登録
+        </button>
+      </p>
+
+      <table border="2" style="border-collapse: collapse" width=100%>
         <thead>
           <tr>
             <th>メーカー名</th>
             <th>商品名</th>
             <th>商品コード</th>
-            <th>アンペア数</th>
-            <th>ワット数</th>
+            <th>アンペア</th>
+            <th>ワット</th>
             <th></th>
           </tr>
         </thead>
 
         <!-- テーブル要素 繰り返し処理予定 -->
         <tbody>
-          <tr th:each="item : ${items}">
+          <tr class="btn_edit" th:each="item : ${items}">
             <td>[[${item.item_maker_name}]]</td>
             <td>[[${item.item_name}]]</td>
             <td>[[${item.item_code}]]</td>
-            <td>[[${item.ampere}]]</td>
-            <td>[[${item.watt}]]</td>
+            <td>[[${item.ampere}]] A</td>
+            <td>[[${item.watt}]] W</td>
             <td>
               <input type="button" name="submit" th:attr="onclick='location.href=\'item/edit/'+${item.item_id}+'\''"
                 value="修正">

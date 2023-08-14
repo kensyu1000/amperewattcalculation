@@ -9,7 +9,7 @@
   <div th:replace="header::header1"></div>
   <main>
 
-    <div id="powerstrip">電源タップ
+    <div id="powerstrip">電源タップ<br>
       <select name="psselect" th:onchange="getON('[[${powerstrips}]]','[[${items}]]')">
         <option value="" selected hidden>選択してください</option>
         <option id="psselect_id" th:each="powerstrip : ${powerstrips}" th:value="${powerstrip.ps_id}">
@@ -19,27 +19,31 @@
       </select>
       <input type="number" min=0 value=1500 name="watt" required />W
     </div>
+    <br>
 
     <!-- 家電製品選択 -->
     <div id="item">
 
     </div>
+    <br>
 
 
-    <button id="btn_calculation" th:onclick="calculation()">
-      計算
-    </button>
+    <div id="btn_calculation">
+      <button th:onclick="calculation()">
+        計算
+      </button>
+    </div>
+    <br><br>
 
     <!-- 計算ボタンクリック後に表示 -->
     <div id="aftercalculation">
       ただいま
       <a id="usedwatt"></a>
       W 使用中です
-      <a id="safety">安全</a>
+      <a id="safety"></a>
 
-      <a id="danger">
-        危険
-      </a>
+      <a id="danger"></a>
+      <br><br>
 
       <!-- 計算後の登録 -->
       <form th:action="@{/}" th:object="${item}" method="post">
@@ -47,13 +51,14 @@
           <div id="maker_name"></div>
           <div id="name"></div>
           <div id="code"></div>
-          <div id="ampere_number"></div>
-          <div id="watt_number"></div>
+          <div id="ampere"></div>
+          <div id="watt"></div>
           <div id="btn_after_register"></div>
         </div>
       </form>
 
     </div>
+    <br><br><br>
 
 
 

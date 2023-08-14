@@ -1,21 +1,136 @@
+body {
+  background-color: #FFFF66;
+}
+
 #powerstrip {
-  padding: 5% 0 0 5%;
+  padding-left: 5%;
+}
+
+#powerstrip input {
+  margin-left: 10%;
 }
 
 #item {
-  padding: 5% 0 0 5%;
+  padding-left: 5%;
 }
 
-/* 真ん中に表示させたい */
+
+#btn_calculation,
+#btn_after_register {
+  width: 50px;
+  margin-top: 40px;
+  margin-left: 70%;
+
+}
+
 #btn_calculation {
-  margin: 3% 45% 0 45%;
-  background-color: greenyellow;
+  display: none;
+}
+
+#btn_calculation button {
+  border: solid;
+  border-color: green;
+  background-color: #33FF99;
 }
 
 #aftercalculation {
   display: none;
+  text-align: center;
 }
 
-#safety {
-  display: inline;
+
+
+#btn_after_register button {
+  border: solid;
+  border-color: blue;
+  background-color: #66FFFF;
+}
+
+
+/* device.html用 */
+#ps_view,
+#item_view {
+  padding: 0 5%;
+}
+
+.type {
+  float: left;
+}
+
+.register {
+  text-align: right;
+}
+
+.register button {
+  border: solid;
+  border-color: blue;
+  background-color: #66FFFF;
+}
+
+.btn_edit input {
+  border: solid;
+  border-color: #444444;
+  background-color: #808080;
+  color: white;
+}
+
+th {
+  background-color: #444444;
+  color: white;
+}
+
+td {
+  text-align: center;
+  background-color: white;
+}
+
+
+/* register.html用 */
+#maker_name,
+#name,
+#code,
+#outllet_number,
+#watt,
+#ampere {
+  text-align: center;
+}
+
+.btn_register {
+  width: 50px;
+  margin-top: 40px;
+  margin-left: 80%;
+}
+
+.btn_register button {
+  background-color: #99FFFF;
+}
+
+/* edit.html用 */
+/* .update_number {
+  text-align: left;
+} */
+
+.btn_update {
+  width: 50px;
+  margin-top: 40px;
+  margin-left: 70%;
+}
+
+.btn_delete {
+  width: 50px;
+  margin-left: 70%;
+}
+
+.btn_update button {
+  border: solid;
+  border-color: #444444;
+  background-color: #808080;
+  color: white;
+}
+
+.btn_delete button {
+  border: solid;
+  border-color: #990000;
+  background-color: #FF3300;
+  color: white;
 }

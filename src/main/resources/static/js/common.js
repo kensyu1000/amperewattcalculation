@@ -28,7 +28,7 @@ function getON(powerstrips, items) {
     }
   }
 
-  var str = "";
+  var str = "電化製品<br>";
   // コンセント数分のセレクトボックスを表示
   for (let i = 0; i < powerstrip[3]; i++) {
     str += "<select id='itemselect" + i + "' name='itemselect" + i + "'>";
@@ -36,7 +36,7 @@ function getON(powerstrips, items) {
       str += "<option value =" + obj[j].watt + ">" + obj[j].item_maker_name + " / " + obj[j].item_name + " / " + obj[j].item_code + "</option>";
     }
     str += "<option value = 0>空</option>";
-    str += "</select>";
+    str += "</select><br>";
   }
   //電源タップのデータをhiddenで準備
   str += "<input id='ps_maker_name' type='hidden' name='ps_maker_name' value=" + powerstrip[0] + ">";
@@ -45,29 +45,35 @@ function getON(powerstrips, items) {
   str += "<input id='outllet_number' type='hidden' name='outllet_number' value=" + powerstrip[3] + ">";
   // これまでのstrをinnerHTMLで表示
   document.getElementById('item').innerHTML = str;
+  document.getElementById("btn_calculation").style.display = "block";
 }
 
 // 選択した電源タップ、電化製品から電力を計算する
 function calculation() {
 
   viewAfterCalculation.style.display = "block";
+
   // デフォルトで非表示
   viewSafetyMessage.style.display = "none";
   viewDangerMessage.style.display = "none";
   viewChangeToItem.style.display = "none";
+
   // getON()でhiddenに格納したデータを取得
   let ps_maker_name = document.getElementById('ps_maker_name').value;
   let ps_name = document.getElementById('ps_name').value;
   let ps_code = document.getElementById('ps_code').value;
   let outllet_number = document.getElementById('outllet_number').value;
+
   // 合計電力量を準備
   let sum_watt = 0;
+
   // 電化製品の選択結果を取得し、sum_wattを計算する
   const watt = document.querySelector('input').value;
   for (let i = 0; i < outllet_number; i++) {
     let item_data = Number(document.getElementById('itemselect' + i).value);
     sum_watt += item_data;
   }
+
   // 使用可能電力量を計算
   let can_use_watt = watt - sum_watt;
 
@@ -78,17 +84,17 @@ function calculation() {
     document.getElementById("safety").innerHTML = "あと " + can_use_watt + " W 使用できます";
 
     // 計算結果登録用のテキストボックス等をinnerHTMLで表示
-    let reg_maker_name = "メーカー名<input type='text' name='item_maker_name' value=" + ps_maker_name + ">";
-    let reg_name = "商品名<input type='text' name='item_name' value=" + ps_name + ">";
+    let reg_maker_name = "メーカー&emsp;<input type='text' name='item_maker_name' value=" + ps_maker_name + ">";
+    let reg_name = "商品名&emsp;&emsp;<input type='text' name='item_name' value=" + ps_name + ">";
     let reg_code = "商品コード<input type='text' name='item_code' value=" + ps_code + ">";
-    let reg_ampere_number = "アンペア数<input type='number' step='0.1' name='ampere' value=" + sum_watt / 100 + ">";
-    let reg_watt_number = "ワット数<input type='number' name='watt' value=" + sum_watt + ">";
+    let reg_ampere_number = "アンペア&emsp;<input type='number' step='0.1' name='ampere' value=" + sum_watt / 100 + ">";
+    let reg_watt_number = "ワット&emsp;&emsp;<input type='number' name='watt' value=" + sum_watt + ">";
     let btn = "<button type='submit'>登録</button>";
     document.getElementById("maker_name").innerHTML = reg_maker_name;
     document.getElementById("name").innerHTML = reg_name;
     document.getElementById("code").innerHTML = reg_code;
-    document.getElementById("ampere_number").innerHTML = reg_ampere_number;
-    document.getElementById("watt_number").innerHTML = reg_watt_number;
+    document.getElementById("ampere").innerHTML = reg_ampere_number;
+    document.getElementById("watt").innerHTML = reg_watt_number;
     document.getElementById("btn_after_register").innerHTML = btn;
   } else {
     viewSafetyMessage.style.display = "none";

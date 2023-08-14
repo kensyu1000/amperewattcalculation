@@ -1,6 +1,9 @@
 header {
-  background-color: #FFF766;
+  background-color: #FFCC00;
   padding: 20px 1rem 1rem 1rem;
+  border: 2px dotted;
+  border-color: blue;
+  margin-bottom: 50px;
 }
 
 .AChead {

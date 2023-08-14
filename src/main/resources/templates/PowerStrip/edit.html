@@ -10,12 +10,12 @@
   <main>
     <form th:action="@{/powerstrip/update/{id}(id=${id})}" th:object="${powerstrip}" method="post">
       <div id="maker_name">
-        メーカー名
+        メーカー&emsp;
         <input type="text" name="ps_maker_name" th:field="*{ps_maker_name}" />
       </div>
 
       <div id="name">
-        商品名
+        商品名&emsp;&emsp;
         <input type="text" name="ps_name" th:field="*{ps_name}" required />
       </div>
 
@@ -24,24 +24,28 @@
         <input type="text" name="ps_code" th:field="*{ps_code}" />
       </div>
 
-      <div id="outllet_number">
-        コンセント数
+      <div id="outllet_number" class="update_number">
+        コンセント
         <input type="number" name="outllet_number" th:field="*{outllet_number}" />
       </div>
 
-      <div id="watt">
-        ワット数
+      <div id="watt" class="update_number">
+        ワット&emsp;&emsp;
         <input type="number" name="watt" th:field="*{watt}" />
       </div>
 
-      <button type="submit">
-        修正
-      </button>
+      <div class="btn_update">
+        <button type="submit">
+          修正
+        </button>
+      </div>
     </form>
     <form th:action="@{/powerstrip/delete/{id}(id=${id})}" method="post">
-      <button type="submit">
-        削除
-      </button>
+      <div class="btn_delete">
+        <button type="submit">
+          削除
+        </button>
+      </div>
     </form>
   </main>
 </body>
