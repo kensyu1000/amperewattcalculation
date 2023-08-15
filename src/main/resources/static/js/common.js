@@ -32,10 +32,10 @@ function getON(powerstrips, items) {
   // コンセント数分のセレクトボックスを表示
   for (let i = 0; i < powerstrip[3]; i++) {
     str += "<select id='itemselect" + i + "' name='itemselect" + i + "'>";
+    str += "<option value = 0>空</option>";
     for (let j = 0; j < obj.length; j++) {
       str += "<option value =" + obj[j].watt + ">" + obj[j].item_maker_name + " / " + obj[j].item_name + " / " + obj[j].item_code + "</option>";
     }
-    str += "<option value = 0>空</option>";
     str += "</select><br>";
   }
   //電源タップのデータをhiddenで準備

@@ -62,21 +62,37 @@ public class ItemController {
   @PostConstruct
   public void dataInit() {
 
-    Item iPhone = new Item();
-    iPhone.setItem_maker_name("Apple");
-    iPhone.setItem_name("iPhone13");
-    iPhone.setItem_code("AI13");
-    iPhone.setAmpere(1.0);
-    iPhone.setWatt(100);
-    itemrepository.saveAndFlush(iPhone);
+    Item Wserver = new Item();
+    Wserver.setItem_maker_name("アクアクララ");
+    Wserver.setItem_name("ウォーターサーバー");
+    Wserver.setItem_code("AW00");
+    Wserver.setAmpere(3.0);
+    Wserver.setWatt(300);
+    itemrepository.saveAndFlush(Wserver);
 
-    Item PC = new Item();
-    PC.setItem_maker_name("Fujitsu");
-    PC.setItem_name("ノートパソコン");
-    PC.setItem_code("FL101");
-    PC.setAmpere(3.0);
-    PC.setWatt(300);
-    itemrepository.saveAndFlush(PC);
+    Item cleaner = new Item();
+    cleaner.setItem_maker_name("DAISON");
+    cleaner.setItem_name("掃除機");
+    cleaner.setItem_code("DC20");
+    cleaner.setAmpere(8.0);
+    cleaner.setWatt(800);
+    itemrepository.saveAndFlush(cleaner);
+
+    Item oven = new Item();
+    oven.setItem_maker_name("日立");
+    oven.setItem_name("電子レンジ");
+    oven.setItem_code("O01");
+    oven.setAmpere(10.0);
+    oven.setWatt(1000);
+    itemrepository.saveAndFlush(oven);
+
+    Item hairdryer = new Item();
+    hairdryer.setItem_maker_name("Panasonic");
+    hairdryer.setItem_name("ドライヤー");
+    hairdryer.setItem_code("HD01");
+    hairdryer.setAmpere(9.0);
+    hairdryer.setWatt(900);
+    itemrepository.saveAndFlush(hairdryer);
   }
 
 }

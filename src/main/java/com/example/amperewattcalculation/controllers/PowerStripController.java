@@ -67,13 +67,13 @@ public class PowerStripController {
     Panasonic.setWatt(1200);
     psrepository.saveAndFlush(Panasonic);
 
-    PowerStrip Apw = new PowerStrip();
-    Apw.setPs_maker_name("Apw");
-    Apw.setPs_name("電源タップ");
-    Apw.setPs_code("APW01");
-    Apw.setOutllet_number(4);
-    Apw.setWatt(1500);
-    psrepository.saveAndFlush(Apw);
+    PowerStrip SANWA = new PowerStrip();
+    SANWA.setPs_maker_name("SANWA SUPPLY");
+    SANWA.setPs_name("雷ガード付き");
+    SANWA.setPs_code("SSG00");
+    SANWA.setOutllet_number(6);
+    SANWA.setWatt(1500);
+    psrepository.saveAndFlush(SANWA);
   }
 
 }
