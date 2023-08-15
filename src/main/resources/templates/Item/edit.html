@@ -6,7 +6,7 @@
 </head>
 
 <body>
-  <div th:replace="header::header1"></div>
+  <header th:replace="header::header1"></header>
   <main>
     <form th:action="@{/item/update/{id}(id=${id})}" th:object="${item}" method="post">
       <div id="maker_name">
