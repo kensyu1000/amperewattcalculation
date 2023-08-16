@@ -11,17 +11,17 @@
     <form th:action="@{/powerstrip/update/{id}(id=${id})}" th:object="${powerstrip}" method="post">
       <div id="maker_name">
         メーカー&emsp;
-        <input type="text" name="ps_maker_name" th:field="*{ps_maker_name}" />
+        <input type="text" name="ps_maker_name" th:field="*{ps_maker_name}" autocomplete="off" />
       </div>
 
       <div id="name">
         商品名&emsp;&emsp;
-        <input type="text" name="ps_name" th:field="*{ps_name}" required />
+        <input type="text" name="ps_name" th:field="*{ps_name}" autocomplete="off" required />
       </div>
 
       <div id="code">
         商品コード
-        <input type="text" name="ps_code" th:field="*{ps_code}" />
+        <input type="text" name="ps_code" th:field="*{ps_code}" autocomplete="off" />
       </div>
 
       <div id="outllet_number" class="update_number">

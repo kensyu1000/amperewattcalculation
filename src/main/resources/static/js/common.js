@@ -63,15 +63,17 @@ function calculation() {
   let ps_maker_name = document.getElementById('ps_maker_name').value;
   let ps_name = document.getElementById('ps_name').value;
   let ps_code = document.getElementById('ps_code').value;
-  let outllet_number = document.getElementById('outllet_number').value;
-  let watt_number = document.getElementById('watt_number').value;
+  let outllet_number = Number(document.getElementById('outllet_number').value);
+  let watt_number = Number(document.getElementById('watt_number').value);
 
   // 合計電力量を準備
   let sum_watt = 0;
 
   // 電化製品の選択結果を取得し、sum_wattを計算する
   let watt;
-  const outllet_watt = document.querySelector('input').value;
+  const outllet_watt = Number(document.querySelector('input').value);
+
+  // 二桁以下の整数だとなぜかelseを通る
   if (outllet_watt <= watt_number) {
     watt = outllet_watt;
   } else {
@@ -93,9 +95,9 @@ function calculation() {
     document.getElementById("safety").innerHTML = "あと " + can_use_watt + " W 使用できます";
 
     // 計算結果登録用のテキストボックス等をinnerHTMLで表示
-    let reg_maker_name = "メーカー&emsp;<input type='text' name='item_maker_name' value=" + ps_maker_name + ">";
-    let reg_name = "商品名&emsp;&emsp;<input type='text' name='item_name' value=" + ps_name + ">";
-    let reg_code = "商品コード<input type='text' name='item_code' value=" + ps_code + ">";
+    let reg_maker_name = "メーカー&emsp;<input type='text' name='item_maker_name' value=" + ps_maker_name + " autocomplete='off'>";
+    let reg_name = "商品名&emsp;&emsp;<input type='text' name='item_name' value=" + ps_name + " autocomplete='off'>";
+    let reg_code = "商品コード<input type='text' name='item_code' value=" + ps_code + " autocomplete='off'>";
     let reg_ampere_number = "アンペア&emsp;<input type='number' step='0.1' name='ampere' value=" + sum_watt / 100 + ">";
     let reg_watt_number = "ワット&emsp;&emsp;<input type='number' name='watt' value=" + sum_watt + ">";
     let btn = "<button type='submit'>登録</button>";
