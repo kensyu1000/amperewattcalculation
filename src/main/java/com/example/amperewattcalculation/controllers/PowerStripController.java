@@ -2,9 +2,13 @@ package com.example.amperewattcalculation.controllers;
 
 import javax.annotation.PostConstruct;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,7 +36,12 @@ public class PowerStripController {
   }
 
   @PostMapping("/powerstrip/register")
-  public String ps_register(@ModelAttribute PowerStrip powerstrip, Model model) {
+  public String ps_register(@Validated @ModelAttribute PowerStrip powerstrip, BindingResult result) {
+    Logger logger = LoggerFactory.getLogger(PowerStripService.class);
+    if (result.hasErrors()) {
+      logger.info("エラー");
+      return "redirect:/powerstrip/register";
+    }
     ps_service.register(powerstrip);
     return "redirect:/device";
   }

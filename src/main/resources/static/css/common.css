@@ -2,6 +2,16 @@ body {
   background-color: #FFFF66;
 }
 
+button,
+select {
+  border-radius: 5px;
+}
+
+input,
+select {
+  text-align: center;
+}
+
 #powerstrip {
   padding-left: 5%;
   font-size: 20px;
@@ -9,6 +19,8 @@ body {
 
 #powerstrip input {
   margin-left: 10%;
+  border-radius: 5px;
+  width: 100px;
 }
 
 #item {
@@ -34,6 +46,10 @@ body {
   background-color: #33FF99;
 }
 
+#btn_calculation button:hover {
+  background: #33DD99;
+}
+
 #aftercalculation {
   display: none;
   text-align: center;
@@ -46,6 +62,11 @@ body {
   border-color: blue;
   background-color: #66FFFF;
 }
+
+#btn_after_register button:hover {
+  background: #66DDFF;
+}
+
 
 
 
@@ -68,6 +89,11 @@ body {
   border: solid;
   border-color: blue;
   background-color: #66FFFF;
+  margin-top: 21.280px;
+}
+
+.register button:hover {
+  background: #66DDFF;
 }
 
 .btn_edit input {
@@ -75,6 +101,12 @@ body {
   border-color: #444444;
   background-color: #808080;
   color: white;
+  width: 50px;
+  border-radius: 5px;
+}
+
+.btn_edit input:hover {
+  background: #606060;
 }
 
 th {
@@ -107,7 +139,13 @@ td {
 }
 
 .btn_register button {
-  background-color: #99FFFF;
+  border: solid;
+  border-color: blue;
+  background-color: #66FFFF;
+}
+
+.btn_register button:hover {
+  background-color: #66DDFF;
 }
 
 
@@ -133,9 +171,17 @@ td {
   color: white;
 }
 
+.btn_update button:hover {
+  background-color: #606060;
+}
+
 .btn_delete button {
   border: solid;
   border-color: #990000;
   background-color: #FF3300;
   color: white;
+}
+
+.btn_delete button:hover {
+  background-color: #DD3300;
 }
