@@ -1,4 +1,4 @@
-// 安全or危険の表示用のIDを指定
+// 安全、危険の表示用のIDを指定
 const viewSafetyMessage = document.getElementById("safety");
 const viewDangerMessage = document.getElementById("danger");
 const viewAfterCalculation = document.getElementById("aftercalculation");

@@ -54,7 +54,6 @@ public class ItemController {
   @PostMapping("/item/delete/{id}")
   public String item_delete(@PathVariable("id") long item_id, Model model) {
     item_service.delete(item_id);
-
     return "redirect:/device";
   }
 
