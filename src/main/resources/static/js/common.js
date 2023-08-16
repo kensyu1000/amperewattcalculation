@@ -43,6 +43,7 @@ function getON(powerstrips, items) {
   str += "<input id='ps_name' type='hidden' name='ps_name' value=" + powerstrip[1] + ">";
   str += "<input id='ps_code' type='hidden' name='ps_code' value=" + powerstrip[2] + ">";
   str += "<input id='outllet_number' type='hidden' name='outllet_number' value=" + powerstrip[3] + ">";
+  str += "<input id='watt_number' type='hidden' name='watt_number' value=" + powerstrip[4] + ">";
   // これまでのstrをinnerHTMLで表示
   document.getElementById('item').innerHTML = str;
   document.getElementById("btn_calculation").style.display = "block";
@@ -63,12 +64,20 @@ function calculation() {
   let ps_name = document.getElementById('ps_name').value;
   let ps_code = document.getElementById('ps_code').value;
   let outllet_number = document.getElementById('outllet_number').value;
+  let watt_number = document.getElementById('watt_number').value;
 
   // 合計電力量を準備
   let sum_watt = 0;
 
   // 電化製品の選択結果を取得し、sum_wattを計算する
-  const watt = document.querySelector('input').value;
+  let watt;
+  const outllet_watt = document.querySelector('input').value;
+  if (outllet_watt <= watt_number) {
+    watt = outllet_watt;
+  } else {
+    watt = watt_number;
+  }
+
   for (let i = 0; i < outllet_number; i++) {
     let item_data = Number(document.getElementById('itemselect' + i).value);
     sum_watt += item_data;

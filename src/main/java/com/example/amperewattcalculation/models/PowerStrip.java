@@ -3,8 +3,6 @@ package com.example.amperewattcalculation.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-// import javax.persistence.JoinColumn;
-// import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -24,8 +22,6 @@ public class PowerStrip {
   @GeneratedValue
   private Long ps_id;
 
-  // // @ManyToOne()
-  // @JoinColumn(name = "user_id", referencedColumnName = "user_id")
   private Long user_id;
 
   @Size(max = 50)

@@ -4,6 +4,7 @@ body {
 
 #powerstrip {
   padding-left: 5%;
+  font-size: 20px;
 }
 
 #powerstrip input {
@@ -47,6 +48,8 @@ body {
 }
 
 
+
+
 /* device.html用 */
 #ps_view,
 #item_view {
@@ -85,6 +88,8 @@ td {
 }
 
 
+
+
 /* register.html用 */
 #maker_name,
 #name,
@@ -105,10 +110,10 @@ td {
   background-color: #99FFFF;
 }
 
+
+
+
 /* edit.html用 */
-/* .update_number {
-  text-align: left;
-} */
 
 .btn_update {
   width: 50px;
