@@ -93,6 +93,14 @@ public class ItemController {
     hairdryer.setAmpere(9.0);
     hairdryer.setWatt(900);
     itemrepository.saveAndFlush(hairdryer);
+
+    Item charger = new Item();
+    charger.setItem_maker_name("AMKER");
+    charger.setItem_name("充電器");
+    charger.setItem_code("AC30");
+    charger.setAmpere(0.3);
+    charger.setWatt(30);
+    itemrepository.saveAndFlush(charger);
   }
 
 }

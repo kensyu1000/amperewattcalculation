@@ -74,7 +74,7 @@ public class PowerStripController {
     Panasonic.setPs_name("電源タップ");
     Panasonic.setPs_code("P01");
     Panasonic.setOutllet_number(3);
-    Panasonic.setWatt(1200);
+    Panasonic.setWatt(1800);
     psrepository.saveAndFlush(Panasonic);
 
     PowerStrip SANWA = new PowerStrip();
