@@ -31,16 +31,17 @@ public class PowerStripController {
   }
 
   @GetMapping("/powerstrip/register")
-  public String ps_register() {
-    return "PowerStrip/register";
+  public String ps_register(Model model) {
+    model.addAttribute("powerstrip", new PowerStrip());
+    return "powerStrip/register";
   }
 
   @PostMapping("/powerstrip/register")
-  public String ps_register(@Validated @ModelAttribute PowerStrip powerstrip, BindingResult result) {
+  public String ps_register(@Validated @ModelAttribute PowerStrip powerstrip, BindingResult result, Model model) {
     Logger logger = LoggerFactory.getLogger(PowerStripService.class);
     if (result.hasErrors()) {
       logger.info("エラー");
-      return "redirect:/powerstrip/register";
+      return "powerstrip/register";
     }
     ps_service.register(powerstrip);
     return "redirect:/device";
