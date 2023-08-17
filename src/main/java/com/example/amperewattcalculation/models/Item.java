@@ -22,8 +22,6 @@ public class Item {
   @GeneratedValue
   private Long item_id;
 
-  // // @ManyToOne()
-  // @JoinColumn(name = "user_id", referencedColumnName = "user_id")
   private Long user_id;
 
   @Size(max = 50)

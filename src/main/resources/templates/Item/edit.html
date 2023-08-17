@@ -11,27 +11,27 @@
     <form th:action="@{/item/update/{id}(id=${id})}" th:object="${item}" method="post">
       <div id="maker_name">
         メーカー&emsp;
-        <input type="text" name="item_maker_name" th:field="*{item_maker_name}" autocomplete="off" />
+        <input type="text" th:field="*{item_maker_name}" autocomplete="off" />
       </div>
 
       <div id="name">
         商品名&emsp;&emsp;
-        <input type="text" name="item_name" th:field="*{item_name}" autocomplete="off" required />
+        <input type="text" th:field="*{item_name}" autocomplete="off" required />
       </div>
 
       <div id="code">
         商品コード
-        <input type="text" name="item_code" th:field="*{item_code}" autocomplete="off" />
+        <input type="text" th:field="*{item_code}" autocomplete="off" />
       </div>
 
       <div id="ampere">
         アンペア&emsp;
-        <input type="number" step="0.1" name="ampere_number" th:field="*{ampere}" />
+        <input type="number" step="0.1" th:field="*{ampere}" />
       </div>
 
       <div id="watt">
         ワット&emsp;&emsp;
-        <input type="number" name="watt_number" th:field="*{watt}" />
+        <input type="number" th:field="*{watt}" />
       </div>
 
       <div class="btn_update">
