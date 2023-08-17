@@ -10,9 +10,9 @@
   <main>
 
     <div id="powerstrip">電源タップ<br>
-      <select name="psselect" th:onchange="getON('[[${powerstrips}]]','[[${items}]]')">
+      <select class="selecting" name="psselect" th:onchange="getON('[[${powerstrips}]]','[[${items}]]')">
         <option value="" selected hidden>選択してください</option>
-        <option id="psselect_id" th:each="powerstrip : ${powerstrips}" th:value="${powerstrip.ps_id}">
+        <option class="psselect_class" th:each="powerstrip : ${powerstrips}" th:value="${powerstrip.ps_id}">
           [[${powerstrip.ps_maker_name}]] /
           [[${powerstrip.ps_name}]] / [[${powerstrip.ps_code}]]
         </option>

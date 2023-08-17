@@ -12,28 +12,28 @@
 
       <div id="maker_name">
         メーカー&emsp;
-        <input type="text" name="ps_maker_name" autocomplete="off" />
+        <input type="text" th:name="ps_maker_name" autocomplete="off" />
       </div>
 
       <div id="name">
         商品名&emsp;&emsp;
-        <input type="text" name="ps_name" autocomplete="off" required />
+        <input type="text" th:name="ps_name" autocomplete="off" required />
       </div>
 
       <div id="code">
         商品コード
-        <input type="text" name="ps_code" autocomplete="off" />
+        <input type="text" th:name="ps_code" autocomplete="off" />
       </div>
 
       <div id="outllet_number">
         コンセント
-        <input type="number" name="outllet_number" required />
+        <input type="number" th:name="outllet_number" required />
         <!-- <div class="red" th:errors="エラーだよ"></div> -->
       </div>
 
       <div id="watt">
         ワット&emsp;&emsp;
-        <input type="number" name="watt" required />
+        <input type="number" th:name="watt" required />
       </div>
 
       <div class="btn_register">

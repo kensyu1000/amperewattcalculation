@@ -12,6 +12,6 @@ public class ErrorHandler {
   @ExceptionHandler(Exception.class)
   public String handleException(Exception e) {
     log.error("[ログ]エラーが発生しました", e);
-    return "/device";
+    return "redirect::/device";
   }
 }
