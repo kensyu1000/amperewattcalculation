@@ -56,6 +56,10 @@ select {
   text-align: center;
 }
 
+.usedwatt {
+  color: blue;
+}
+
 
 
 #btn_after_register button {
@@ -212,6 +216,10 @@ td {
 
   option {
     background-color: #777;
+  }
+
+  .usedwatt {
+    color: #40f0ab;
   }
 
 }

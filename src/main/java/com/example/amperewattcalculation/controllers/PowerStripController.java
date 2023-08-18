@@ -41,7 +41,7 @@ public class PowerStripController {
     Logger logger = LoggerFactory.getLogger(PowerStripService.class);
     if (result.hasErrors()) {
       logger.info("エラー");
-      return "powerstrip/register";
+      return "redirect:/powerstrip/register";
     }
     ps_service.register(powerstrip);
     return "redirect:/device";

@@ -1,17 +1,17 @@
-// package com.example.amperewattcalculation.controllers;
+package com.example.amperewattcalculation.controllers;
 
-// import org.springframework.web.bind.annotation.ExceptionHandler;
-// import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-// import lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.Slf4j;
 
-// @RestControllerAdvice
-// @Slf4j
-// public class ErrorHandler {
+@RestControllerAdvice
+@Slf4j
+public class ErrorHandler {
 
-// @ExceptionHandler(Exception.class)
-// public String handleException(Exception e) {
-// log.error("[ログ]エラーが発生しました", e);
-// return "redirect::/device";
-// }
-// }
+  @ExceptionHandler(Exception.class)
+  public String handleException(Exception e) {
+    log.error("[ログ]エラーが発生しました", e);
+    return "不正値を検出しました";
+  }
+}

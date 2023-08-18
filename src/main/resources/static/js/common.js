@@ -8,9 +8,7 @@ const viewChangeToItem = document.getElementById("ChangeToItem");
 function getON(powerstrips, items) {
 
   // デフォルトで非表示
-  viewSafetyMessage.style.display = "none";
-  viewDangerMessage.style.display = "none";
-
+  NotViewSafetyDanger();
   viewAfterCalculation.style.display = "none";
 
   // JSONの処理
@@ -21,12 +19,11 @@ function getON(powerstrips, items) {
   let powerstrip_id = document.querySelector('select').value;
   let powerstrip = [];
   // 選択したIDと一致するデータを探索、配列にデータを代入
-  for (let i = 0; i < ps.length; i++) {
-    if (ps[i].ps_id == powerstrip_id) {
-      outllet_number = ps[i].outllet_number;
-      powerstrip = [ps[i].ps_maker_name, ps[i].ps_name, ps[i].ps_code, ps[i].outllet_number, ps[i].watt];
-    }
+  let j = 0;
+  while (ps[j].ps_id != powerstrip_id) {
+    j += 1;
   }
+  powerstrip = [ps[j].ps_maker_name, ps[j].ps_name, ps[j].ps_code, ps[j].outllet_number, ps[j].watt];
 
   var str = "電化製品<br>";
   // コンセント数分のセレクトボックスを表示
@@ -55,8 +52,7 @@ function calculation() {
   viewAfterCalculation.style.display = "block";
 
   // デフォルトで非表示
-  viewSafetyMessage.style.display = "none";
-  viewDangerMessage.style.display = "none";
+  NotViewSafetyDanger();
   viewChangeToItem.style.display = "none";
 
   // getON()でhiddenに格納したデータを取得
@@ -66,20 +62,17 @@ function calculation() {
   let outllet_number = Number(document.getElementById('outllet_number').value);
   let watt_number = Number(document.getElementById('watt_number').value);
 
-  // 合計電力量を準備
-  let sum_watt = 0;
+  let sum_watt = 0; //合計電力量
 
-  // 電化製品の選択結果を取得し、sum_wattを計算する
+  // コンセントと電源タップ、どちらのワットを適用するか判定
   let watt;
   const outllet_watt = Number(document.querySelector('input').value);
-
-  // 二桁以下の整数だとなぜかelseを通る
   if (outllet_watt <= watt_number) {
     watt = outllet_watt;
   } else {
     watt = watt_number;
   }
-
+  // 選択された電化製品のワット数から、合計電力を計算
   for (let i = 0; i < outllet_number; i++) {
     let item_data = Number(document.getElementById('itemselect' + i).value);
     sum_watt += item_data;
@@ -92,7 +85,7 @@ function calculation() {
     viewChangeToItem.style.display = "block";
     viewSafetyMessage.style.display = "block";
     viewDangerMessage.style.display = "none";
-    document.getElementById("safety").innerHTML = "あと " + can_use_watt + " W 使用できます";
+    document.getElementById("safety").innerHTML = "あと <a class ='usedwatt'>" + can_use_watt + "</a> W 使用できます";
 
     // 計算結果登録用のテキストボックス等をinnerHTMLで表示
     let reg_maker_name = "メーカー&emsp;<input type='text' name='item_maker_name' value=" + ps_maker_name + " autocomplete='off'>";
@@ -110,7 +103,12 @@ function calculation() {
   } else {
     viewSafetyMessage.style.display = "none";
     viewDangerMessage.style.display = "block";
-    document.getElementById("danger").innerHTML = "あと <a style='color:red'>" + -can_use_watt + "</a>W 減らしてください";
+    document.getElementById("danger").innerHTML = "あと <a  style='color:red'>" + -can_use_watt + "</a>W 減らしてください";
   }
   document.getElementById("usedwatt").innerHTML = sum_watt;
+}
+
+function NotViewSafetyDanger() {
+  viewSafetyMessage.style.display = "none";
+  viewDangerMessage.style.display = "none";
 }

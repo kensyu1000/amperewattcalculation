@@ -5,6 +5,8 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,7 +35,10 @@ public class ItemController {
   }
 
   @PostMapping("/item/register")
-  public String item_register(@ModelAttribute Item item) {
+  public String item_register(@Validated @ModelAttribute Item item, BindingResult result) {
+    if (result.hasErrors()) {
+      return "redirect:/item/register";
+    }
     item_service.register(item);
     return "redirect:/device";
   }
